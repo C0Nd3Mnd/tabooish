@@ -77,19 +77,14 @@ export default defineComponent({
         return
       }
 
-      let cards: CardData[]
+      let rawCards: CardData[]
 
       try {
-        cards = await this.fetchGist(username, gist)
+        rawCards = await this.fetchGist(username, gist)
       } catch (ex) {
         this.errorMessage = `Ausnahmefehler beim Laden der Kartendaten: ${ex.message}`
         return
       }
-
-      const gistURL = `https://gist.githubusercontent.com/${username}/${gist}/raw/`
-
-      const result = await fetch(gistURL)
-      const rawCards = await result.json()
 
       if (!(rawCards instanceof Array)) {
         this.errorMessage = 'Die Kartendaten konnten nicht geladen werden.'
