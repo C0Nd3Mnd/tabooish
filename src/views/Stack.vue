@@ -20,7 +20,13 @@
       </button>
     </div>
     <div class="col-6 col-md-4 col-lg-2">
-      <button class="btn btn--block" @click="reset">Neu mischen</button>
+      <button
+        class="btn btn--block"
+        :disabled="usedCards.length === 0"
+        @click="reset"
+      >
+        Neu mischen
+      </button>
     </div>
   </div>
   <div class="row row--padded">
@@ -60,7 +66,7 @@ export default defineComponent({
   methods: {
     ...mapMutations(['drawCard', 'reset']),
     /**
-     * Loads card data from GitHub Gist when the `username` and `gist` route
+     * Loads card data from a GitHub gist when the `username` and `gist` route
      * parameters are specified.
      */
     async loadCardsFromGist(): Promise<void> {
@@ -110,6 +116,14 @@ export default defineComponent({
         }
       }
     },
+    /**
+     * Fetches raw JSON from a GitHub gist, validates it and generates an array
+     * containing card data.
+     *
+     * @param username - Username the gist belongs to.
+     * @param gist - Hash of the gist.
+     * @returns Array of parsed card data.
+     */
     async fetchGist(username: string, gist: string): Promise<CardData[]> {
       const gistURL = `https://gist.githubusercontent.com/${username}/${gist}/raw/`
 
@@ -150,6 +164,9 @@ export default defineComponent({
       return cards
     }
   },
+  /**
+   * Calls this.loadCardsFromGist on component creation.
+   */
   created() {
     this.loadCardsFromGist()
   }
