@@ -37,11 +37,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { version } from '../package.json'
-import NavigationBar from './components/NavigationBar.vue'
+// import NavigationBar from './components/NavigationBar.vue'
 
 export default defineComponent({
   components: {
-    NavigationBar
+    // NavigationBar
   },
   /**
    * Component data.
