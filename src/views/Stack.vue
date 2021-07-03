@@ -12,14 +12,25 @@
   <div class="row row--padded">
     <div class="col-6 col-md-4 col-md-offset-2 col-lg-2 col-lg-offset-4">
       <button
-        class="btn btn--block"
+        class="btn btn--block btn--large btn--success"
         :disabled="!remainingCards"
         @click="drawCard"
       >
-        Karte ziehen
+        Erraten
       </button>
     </div>
     <div class="col-6 col-md-4 col-lg-2">
+      <button
+        class="btn btn--block btn--large btn--info"
+        :disabled="!remainingCards"
+        @click="drawCard"
+      >
+        Nächste Karte
+      </button>
+    </div>
+  </div>
+  <div class="row row--padded">
+    <div class="col-12 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4">
       <button
         class="btn btn--block"
         :disabled="usedCards.length === 0"
