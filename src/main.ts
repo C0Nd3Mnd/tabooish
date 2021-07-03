@@ -4,7 +4,7 @@ import { router } from './router'
 import { store } from './store'
 import './tiny-grid.scss'
 import '@fontsource/roboto'
-import './default.css'
+import './default.scss'
 
 const app = createApp(App)
 
